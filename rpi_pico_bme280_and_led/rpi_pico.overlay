@@ -1,0 +1,17 @@
+/ {
+    led: led {
+        compatible = "gpio-ctrl";
+        gpios = <&gpio0 28 0x0>;
+    };
+};
+
+&i2c0 {
+	status = "okay";
+	bme280: bme280@76 {
+		compatible = "bosch,bme280";
+		reg = <0x76>;
+	};
+};
+
+
+
