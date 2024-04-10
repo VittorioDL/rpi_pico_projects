@@ -1,0 +1,6 @@
+/ {
+	camera: camera {
+        compatible = "gpio-ctrl";
+        gpios = <&gpio0 15 0x0>;
+    };
+};
