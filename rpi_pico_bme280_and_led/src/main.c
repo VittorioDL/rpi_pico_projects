@@ -47,7 +47,7 @@ int main(void)
         k_msleep(500);
         gpio_pin_toggle_dt(&led_dev);
         
-        //BME
+        // BME
         const struct device *bme_dev = get_bme280_device();
         if (bme_dev == NULL) {
             return 0;

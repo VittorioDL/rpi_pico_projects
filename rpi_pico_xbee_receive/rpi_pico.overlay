@@ -2,11 +2,7 @@
 	chosen {
 		cansat,xbee = &uart1;
 	};
-	zephyr,user {
-		io-channels = <&adc 0>;
-	};
 };
-
 
 &pinctrl{
 	uart_xbee: uart_xbee {
@@ -31,16 +27,24 @@
 	pinctrl-names = "default";
 };
 
-&adc {
-	#address-cells = <1>;
-	#size-cells = <0>;
+// &pinctrl{
+// 	myi2c: myi2c {
+// 		group1 {
+// 			pinmux = <I2C0_SDA_P8>, <I2C0_SCL_P9>;
+// 			input-enable;
+// 			input-schmitt-enable;
+// 		};
+// 	};
+// };
 
-	channel@0 {
-		reg = <0>;
-		zephyr,gain = "ADC_GAIN_1";
-		zephyr,reference = "ADC_REF_INTERNAL";
-		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-		zephyr,resolution = <12>;
-	};
-};
+// &i2c0 {
+// 	status = "okay";
+// 	pinctrl-0 = <&myi2c>;
+// 	// clock-frequency = <I2C_BITRATE_STANDARD>;
+// 	bme280: bme280@76 {
+// 		compatible = "bosch,bme280";
+// 		reg = <0x76>;
+// 	};
+// };
+
 
