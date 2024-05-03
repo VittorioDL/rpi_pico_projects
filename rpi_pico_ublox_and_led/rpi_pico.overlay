@@ -1,0 +1,32 @@
+/ {
+    led: led {
+        compatible = "gpio-ctrl";
+        gpios = <&gpio0 6 0x0>;
+    };
+};
+&pinctrl{
+	myi2c: myi2c {
+		group1 {
+			pinmux = <I2C0_SDA_P20>, <I2C0_SCL_P21>;
+			input-enable;
+			input-schmitt-enable;
+		};
+	};
+};
+&i2c0 {
+	status = "okay";
+	pinctrl-0 = <&myi2c>;
+	neom8: neom8@42 {
+        status = "okay";
+        compatible = "u-blox,neom8";
+        label = "NEOM8";
+        reg = <0x42>;
+    };
+	bme280: bme280@76 {
+		compatible = "bosch,bme280";
+		reg = <0x76>;
+	};
+};
+
+
+

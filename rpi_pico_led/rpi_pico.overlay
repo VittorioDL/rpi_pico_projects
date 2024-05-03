@@ -1,0 +1,12 @@
+/ {
+    led: led {
+        compatible = "gpio-ctrl";
+        gpios = <&gpio0 4 0x0>;
+    };
+	led1: led1 {
+        compatible = "gpio-ctrl";
+        gpios = <&gpio0 5 0x0>;
+    };
+};
+
+
