@@ -1,0 +1,10 @@
+# out of tree drivers configuration options
+
+# Copyright (c) 2015 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+menu "Device Drivers"
+
+rsource "bmi088/Kconfig"
+
+endmenu

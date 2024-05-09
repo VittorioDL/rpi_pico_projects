@@ -1,0 +1,43 @@
+/ {
+    led: led {
+        compatible = "gpio-ctrl";
+        gpios = <&gpio0 25 0x0>;
+    };
+    
+    aliases {
+		gyro = &bmi088gyro;
+        accel = &bmi088accel;
+	};
+};
+
+&pinctrl{
+	myi2c: myi2c {
+		group1 {
+			pinmux = <I2C0_SDA_P12>, <I2C0_SCL_P13>;
+			input-enable;
+			input-schmitt-enable;
+		};
+	};
+};
+
+&i2c0 {
+	status = "okay";
+	pinctrl-0 = <&myi2c>;
+    bmi088accel: bmi088accel@18 {
+        status = "okay";
+        compatible = "bosch,bmi08x-accel";
+        reg = <0x18>;
+        accel-hz = "800";
+        accel-fs = <12>;
+    };
+    bmi088gyro: bmi088gyro@68 {
+        status = "okay";
+        compatible = "bosch,bmi08x-gyro";
+        reg = <0x68>;
+        gyro-hz = "100_32";
+        gyro-fs = <125>;
+    };
+
+};
+
+

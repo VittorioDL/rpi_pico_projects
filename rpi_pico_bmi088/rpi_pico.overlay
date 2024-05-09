@@ -1,0 +1,32 @@
+/ {
+    led: led {
+        compatible = "gpio-ctrl";
+        gpios = <&gpio0 25 0x0>;
+    };
+};
+&pinctrl{
+	myi2c: myi2c {
+		group1 {
+			pinmux = <I2C0_SDA_P4>, <I2C0_SCL_P5>;
+			input-enable;
+			input-schmitt-enable;
+		};
+	};
+};
+&i2c0 {
+	status = "okay";
+	pinctrl-0 = <&myi2c>;
+	bmi088_gyr: bmi088_gyr@69 {
+        compatible = "bosch,bmi088-gyr";
+        reg = <0x69>;
+        status = "okay";
+    };
+    bmi088_acc: bmi088_acc@19 {
+        compatible = "bosch,bmi088-acc";
+        reg = <0x19>;
+        status = "okay";
+    };
+	
+};
+
+

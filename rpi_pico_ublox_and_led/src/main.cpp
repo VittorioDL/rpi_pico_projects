@@ -14,6 +14,7 @@
 #include <drivers/gnss/ublox_neo_m8.h>
 #include <ctime>
 #include <string>
+
 #define NEO_SERIAL DT_NODELABEL(neom8)
 
     struct utc_time {
