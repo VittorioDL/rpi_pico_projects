@@ -33,12 +33,16 @@ static const struct adc_dt_spec adc_channels[] = {
                     DT_SPEC_AND_COMMA)
 };
 
+#define PITOT_TUBE_ADC_CHANNEL 0
+#define VOLTAGE_ADC_CHANNEL 1
+
 namespace drivers::adc {
     class Adc {
         public:
             explicit Adc();
 
             double getVoltage();
+            double getPitotSpeed();
         private:
             int err;
             int16_t buf;

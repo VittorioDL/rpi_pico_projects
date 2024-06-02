@@ -2,6 +2,9 @@
 	chosen {
 		cansat,xbee = &uart1;
 	};
+	zephyr,user {
+		io-channels = <&adc 0>;
+	};
 };
 
 
@@ -17,7 +20,7 @@
 	};
 	led: led {
         compatible = "gpio-ctrl";
-        gpios = <&gpio0 10 0x0>;
+        gpios = <&gpio0 16 0x0>;
     };
 };
 
@@ -28,6 +31,16 @@
 	pinctrl-names = "default";
 };
 
+&adc {
+	#address-cells = <1>;
+	#size-cells = <0>;
 
-
+	channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+	};
+};
 

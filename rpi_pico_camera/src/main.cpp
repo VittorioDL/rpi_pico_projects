@@ -23,22 +23,16 @@ int main(void)
 
 	subsys::Camera camera(camera_dev);
 	camera.startRecording();
-    printk("Ciao mamma sono in tv");
-	k_msleep(3000);
+    printk("Ciao mamma sono in tv\n");
+	k_msleep(15000);
+	printk("Fine trasmissione\n");
 	camera.stopRecording();
-
-	// //LED
-	// static const struct gpio_dt_spec led_dev = GPIO_DT_SPEC_GET(DT_NODELABEL(led), gpios);
-    // gpio_pin_configure_dt(&led_dev, GPIO_OUTPUT_ACTIVE);
 	
-    while(1){
-		//LED-------------------------------------------------------------
-        printk("nel main\n");
-        k_msleep(500);
-        // gpio_pin_toggle_dt(&led_dev);
-        
-		// k_sleep(K_MSEC(100));
-    }
+    // while(1){
+	// 	//LED-------------------------------------------------------------
+    //     printk("nel main\n");
+    //     k_msleep(500);
+    // }
 	return 0;
 }
 

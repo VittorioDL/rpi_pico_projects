@@ -1,7 +1,7 @@
 / {
     led: led {
         compatible = "gpio-ctrl";
-        gpios = <&gpio0 6 0x0>;
+        gpios = <&gpio0 22 0x0>;
     };
 };
 &pinctrl{

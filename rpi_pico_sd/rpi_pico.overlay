@@ -1,21 +1,36 @@
 &pinctrl {
-    spi1_default: spi1_default {
+    myspi0: myspi0 {
         group1 {
-            pinmux = <SPI1_CSN_P13>, <SPI1_SCK_P10>, <SPI1_TX_P11>;
+            pinmux = <SPI0_CSN_P1>, <SPI0_SCK_P2>, <SPI0_TX_P3>;
         };
         group2 {
-            pinmux = <SPI1_RX_P12>;
+            pinmux = <SPI0_RX_P0>;
             input-enable;
         };
     };
- };
 
-&spi1 {
+    uart_serial: uart_serial {
+		group1 {
+			pinmux = <UART0_TX_P12>;
+		};
+		group2 {
+			pinmux = <UART0_RX_P13>;
+			input-enable;
+		};
+	};
+};
+
+&uart0 {
+	status = "okay";
+	pinctrl-0 = <&uart_serial>;
+};
+
+&spi0 {
     status = "okay";
     // clock-frequency = <DT_FREQ_M(8)>;
-    pinctrl-0 = <&spi1_default>;
+    pinctrl-0 = <&myspi0>;
     pinctrl-names = "default";
-    cs-gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+    cs-gpios = <&gpio0 1 GPIO_ACTIVE_LOW>;
     sdhc0: sdhc@0 {
         compatible = "zephyr,sdhc-spi-slot";
         reg = <0>;
